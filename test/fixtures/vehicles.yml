@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vin: MyString
+  car: one
+  year: 1
+  color: MyString
+  transmission: one
+  price: 9.99
+
+two:
+  vin: MyString
+  car: two
+  year: 1
+  color: MyString
+  transmission: two
+  price: 9.99
