@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+Car.destroy_all
 Model.destroy_all
 Make.destroy_all
 
@@ -13,6 +13,8 @@ Make.destroy_all
   make = Make.create(name: Faker::Vehicle.unique.make)
 
   3.times do
-    Model.create(name: Faker::Vehicle.model(make.name))
+    model = Model.create(name: Faker::Vehicle.model(make.name))
+
+    car = Car.create(make: make, model: model, trim: Faker::Vehicle.style)
   end
 end
