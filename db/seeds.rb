@@ -51,22 +51,24 @@ auto_trans = Transmission.create(name: 'Automatic')
 #   Vehicle.create(vin: vin, car: car, year: year, color: color, transmission: transmission, price: price)
 # end
 
-9.times do
+8.times do
   make = Make.create(name: Faker::Vehicle.unique.make)
 
-  2.times do
-    model = Model.create(name: Faker::Vehicle.model(make.name))
+  if make.valid?
+    3.times do
+      model = Model.create(name: Faker::Vehicle.model(make.name))
 
-    car = Car.create(make: make, model: model, trim: Faker::Vehicle.style)
+      car = Car.create(make: make, model: model, trim: Faker::Vehicle.style)
 
-    10.times do
-      vin = Faker::Vehicle.unique.vin
-      price = Faker::Number.number(5)
-      year = Faker::Number.between(2010, 2018)
-      color = Faker::Color.color_name
-      transmission = Transmission.order("RANDOM()").first
+      10.times do
+        vin = Faker::Vehicle.unique.vin
+        price = Faker::Number.number(5)
+        year = Faker::Number.between(2010, 2018)
+        color = Faker::Color.color_name
+        transmission = Transmission.order("RANDOM()").first
 
-      Vehicle.create(vin: vin, car: car, year: year, color: color, transmission: transmission, price: price)
+        Vehicle.create(vin: vin, car: car, year: year, color: color, transmission: transmission, price: price)
+      end
     end
   end
 end
