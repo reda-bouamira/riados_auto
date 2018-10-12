@@ -1,2 +1,10 @@
-<h1>Vehicles#index</h1>
+<h1>Vehicles</h1>
 <p>Find me in app/views/vehicles/index.html.erb</p>
+
+<h1><%= @vehicles.first.car.make.name %></h1>
+
+<ul>
+	<% @vehicles.each do |vehicle| %>
+		<li><%= vehicle.car.model %></li>
+	<% end %>
+</ul>
