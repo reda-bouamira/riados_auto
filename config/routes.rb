@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :vehicles, only: [:index, :show]
+
   get 'vehicles', to:'vehicles#index'
 
   root to: 'vehicles#index'
