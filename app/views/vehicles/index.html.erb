@@ -5,6 +5,6 @@
 
 <ul>
 	<% @vehicles.each do |vehicle| %>
-		<li><%= vehicle.car.model %></li>
+		<li><%= " VIN: " + vehicle.vin  %></li>
 	<% end %>
 </ul>

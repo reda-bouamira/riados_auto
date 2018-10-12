@@ -19,42 +19,42 @@ manual_trans = Transmission.create(name: 'Manual')
 auto_trans = Transmission.create(name: 'Automatic')
 
 
-aston_file = File.read "app/assets/json/aston.json"
-aston_martin_json = JSON.parse(aston_file)
+# aston_file = File.read "app/assets/json/aston.json"
+# aston_martin_json = JSON.parse(aston_file)
 
-aston_martin_json['Results'].each do |data|
-  make = Make.create(name: data["Make_Name"])
-  model = Model.create(name: data["Model_Name"])
-  car = Car.create(make: make, model: model, trim: Faker::Vehicle.style)
-  vin = Faker::Vehicle.unique.vin
-  price = Faker::Number.number(6)
-  year = 2018
-  color = Faker::Color.color_name
-  transmission = Transmission.order("RANDOM()").first
+# aston_martin_json['Results'].each do |data|
+#   make = Make.create(name: data["Make_Name"])
+#   model = Model.create(name: data["Model_Name"])
+#   car = Car.create(make: make, model: model, trim: Faker::Vehicle.style)
+#   vin = Faker::Vehicle.unique.vin
+#   price = Faker::Number.number(6)
+#   year = 2018
+#   color = Faker::Color.color_name
+#   transmission = Transmission.order("RANDOM()").first
 
-  Vehicle.create(vin: vin, car: car, year: year, color: color, transmission: transmission, price: price)
-end
+#   Vehicle.create(vin: vin, car: car, year: year, color: color, transmission: transmission, price: price)
+# end
 
-rolls_file = File.read "app/assets/json/rolls.json"
-rolls_json = JSON.parse(rolls_file)
+# rolls_file = File.read "app/assets/json/rolls.json"
+# rolls_json = JSON.parse(rolls_file)
 
-rolls_json['Results'].each do |data|
-  make = Make.create(name: data["Make_Name"])
-  model = Model.create(name: data["Model_Name"])
-  car = Car.create(make: make, model: model, trim: Faker::Vehicle.style)
-  vin = Faker::Vehicle.unique.vin
-  price = Faker::Number.number(6)
-  year = 2018
-  color = Faker::Color.color_name
-  transmission = Transmission.order("RANDOM()").first
+# rolls_json['Results'].each do |data|
+#   make = Make.create(name: data["Make_Name"])
+#   model = Model.create(name: data["Model_Name"])
+#   car = Car.create(make: make, model: model, trim: Faker::Vehicle.style)
+#   vin = Faker::Vehicle.unique.vin
+#   price = Faker::Number.number(6)
+#   year = 2018
+#   color = Faker::Color.color_name
+#   transmission = Transmission.order("RANDOM()").first
 
-  Vehicle.create(vin: vin, car: car, year: year, color: color, transmission: transmission, price: price)
-end
+#   Vehicle.create(vin: vin, car: car, year: year, color: color, transmission: transmission, price: price)
+# end
 
-8.times do
+9.times do
   make = Make.create(name: Faker::Vehicle.unique.make)
 
-  3.times do
+  2.times do
     model = Model.create(name: Faker::Vehicle.model(make.name))
 
     car = Car.create(make: make, model: model, trim: Faker::Vehicle.style)
